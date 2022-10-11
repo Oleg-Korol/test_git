@@ -35,6 +35,7 @@ box.add_shape(my_shape2)
 assert box.get_common_area() == 5 * 10 + math.pi * 5 ** 2
 box.remove_shape()
 assert box.get_common_area() == 5 * 10
+print(box.__dict__)
 
 
 
