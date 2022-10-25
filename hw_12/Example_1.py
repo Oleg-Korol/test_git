@@ -19,9 +19,9 @@ connection = create_connection()
 #создаем таблицу
 create_users_table =("""CREATE TABLE IF NOT EXISTS departaments(
                  id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 name str,
-                 manager_id ,
-                 location_id str );""")
+                 name VARCHAR(20),
+                 manager_id INTEGER,
+                 location_id VARCHAR(20) );""")
 execute_query(connection, create_users_table)
 
 #заполняем таблицу

@@ -15,9 +15,10 @@ connection = create_connection()
 
 #создаем таблицу
 create_users_table =("""CREATE TABLE IF NOT EXISTS jobs(
-                 title str PRIMARY KEY,
-                 min_salary int,
-                 max_salary int );""")
+                 jobs_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 title varchar(20) ,
+                 min_salary integer,
+                 max_salary integer );""")
 execute_query(connection, create_users_table)
 
 

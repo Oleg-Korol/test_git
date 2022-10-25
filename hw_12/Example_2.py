@@ -20,21 +20,22 @@ connection = create_connection()
 
 #создаем таблицу
 create_users_table =("""CREATE TABLE IF NOT EXISTS Employees(
+                 Employs_id INTEGER PRIMARY KEY AUTOINCREMENT,
                  first_name  varchar(10),
                  last_name   varchar(15),
                  email       varchar(15),
                  phone_number varchar(15),
                  hire_date   varchar(10), 
                  job_id        varchar(15),
-                 manager_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+                 manager_id VARCHAR(3) ,
                  department_id  int );""")
 execute_query(connection, create_users_table)
 
 #заполняем таблицу
-create_users =("""INSERT INTO Employees(first_name,last_name,email,phone_number,hire_date,job_id ,department_id) 
-                VALUES('Ivan','Ivanov', 'qwqw@.com','232-43-42','01.02.2019',5,"Bank"),
-                ('Mark','Petrov', 'qcxx@.com','252-53-62','06.06.2019',7,"Bank"),
-                ('Alex','Sidorov', 'dfdffdw@.com','255-43-33','11.07.2022',9,"Bank")""")
+create_users =("""INSERT INTO Employees(first_name,last_name,email,phone_number,hire_date,job_id ,manager_id, department_id) 
+                VALUES('Ivan','Ivanov', 'qwqw@.com','232-43-42','01.02.2019',5,"YES","Bank"),
+                ('Mark','Petrov', 'qcxx@.com','252-53-62','06.06.2019',7,"NO","Bank"),
+                ('Alex','Sidorov', 'dfdffdw@.com','255-43-33','11.07.2022',9,"YES","Bank")""")
 execute_query(connection,create_users)
 
 # выводим таблицу
@@ -47,5 +48,5 @@ for user in users:
 # выводим общее кол-во руководителей
 print("Количество менеджеров",end=":")
 curs = connection.cursor()
-curs.execute("SELECT * FROM Employees")
+curs.execute("SELECT * FROM Employees WHERE manager_id = 'YES'")
 print(len(curs.fetchall()))

@@ -68,16 +68,6 @@ for user in users:
 
 
 # выводим отсортированный список городов
-Sity=[]
-select_users = "SELECT * from location"
-users = execute_read_query(connection, select_users)
-for user in users:
-     for i in range(len(user)):
-         if i==2:
-             Sity.append(user[i])
-
-Sity=set(Sity)
-sort_sity=list(Sity)
-sort_sity.sort()
-
-print(sort_sity)
+curs = connection.cursor()
+a=sorted(set(curs.execute("SELECT DISTINCT city FROM location ")))
+print("Отсортированный список городов",a)
