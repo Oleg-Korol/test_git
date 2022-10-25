@@ -69,5 +69,6 @@ for user in users:
 
 # выводим отсортированный список городов
 curs = connection.cursor()
-a=sorted(set(curs.execute("SELECT DISTINCT city FROM location ")))
-print("Отсортированный список городов",a)
+curs.execute("SELECT DISTINCT city  FROM location ORDER BY city ")
+print((curs.fetchall()))
+
