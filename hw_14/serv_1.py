@@ -19,14 +19,9 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
         print(f'conected  by {addr}')
         while True:
             data=conn.recv(1024)                                           #получает данные из сокета.
-            if data.decode()=='q' or data.decode()=="Q":
+            if data.decode().lower()=='q':
                 break
 
-            elif data.decode()=='auth':
-                token=f'token:<some_unic_token>'
-                conn.sendall(token.encode())
-                with open("data_file.json", "w") as write_file:
-                    json.dump(token, write_file)
 
             else:
                 data = str(len(data))

@@ -55,7 +55,7 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
         print(f'conected  by {addr}')
         while True:
             data=conn.recv(1024)                                           #получает данные из сокета.
-            if data.decode()=='q' or data.decode()=="Q":
+            if data.decode().lower()=='q':
                 break
 
             elif data.decode()=='auth':
